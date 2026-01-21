@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AusCan Diagnostics</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#39ff14">
+  <style>
+    :root { --neon: #39ff14; --bg: #0a0a0a; }
+    body { background: var(--bg); color: #fff; font-family: sans-serif; margin: 0; text-align: center; }
+    header { padding: 2rem; border-bottom: 2px solid var(--neon); }
+    h1 { color: var(--neon); text-shadow: 0 0 10px var(--neon); margin: 0; }
+    .hero { padding: 3rem 1rem; }
+    .btn { display: inline-block; background: var(--neon); color: #000; padding: 1rem 2rem; 
+           border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 0 20px var(--neon); }
+    .status-badge { font-size: 0.8rem; margin-top: 1rem; color: #888; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AUSCAN</h1>
+    <p>Professional AU CAN Bus Diagnostics</p>
+  </header>
+  <div class="hero">
+    <p>Squash repair costs with direct OEM+ links.</p>
+    <a href="mailto:clay@auscan.com.au" class="btn">JOIN THE TEAM</a>
+    <div id="pwa-status" class="status-badge">App is ready for offline use</div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(reg => {
+          console.log('AusCan SW Registered');
+        }).catch(err => console.log('SW Registration Failed', err));
+      });
+    }
+  </script>
+</body>
+</html>
